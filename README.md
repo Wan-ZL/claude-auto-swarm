@@ -155,21 +155,13 @@ Or in Claude Code:
 /plugin remove enforce-teams@claude-enforce-teams
 ```
 
+Hooks are automatically removed when the plugin is uninstalled.
+
 ### Step 2: Remove the level config
 
 ```bash
 rm ~/.claude/enforce-teams-level
 ```
-
-### Step 3: Remove the hook script
-
-```bash
-rm ~/.claude/hooks/enforce_teams_check.sh
-```
-
-### Step 4: Remove the hook entry from settings
-
-Open `~/.claude/settings.json` and remove the `UserPromptSubmit` hook entry that references `enforce_teams_check.sh`.
 
 ### Optional: Remove the marketplace
 
