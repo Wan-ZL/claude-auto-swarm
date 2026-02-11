@@ -31,17 +31,37 @@ Claude Code's [Agent Teams](https://code.claude.com/docs/en/agent-teams) (Orches
 
 ## Install
 
+### Step 1: Add the marketplace
+
+In terminal:
 ```bash
-claude plugin add <github-username>/claude-auto-swarm
+claude plugin marketplace add Wan-ZL/claude-auto-swarm
 ```
 
-Then run the setup command to choose your aggressiveness level:
+Or in Claude Code:
+```
+/plugin marketplace add Wan-ZL/claude-auto-swarm
+```
+
+### Step 2: Install the plugin
+
+In terminal:
+```bash
+claude plugin install auto-swarm@claude-auto-swarm
+```
+
+Or in Claude Code:
+```
+/plugin install auto-swarm@claude-auto-swarm
+```
+
+### Step 3: Configure aggressiveness level
 
 ```
 /auto-swarm
 ```
 
-This writes the auto-activation rules to your `~/.claude/CLAUDE.md`. The rules take effect in every new conversation.
+Choose from 5 levels. This writes the auto-activation rules to your `~/.claude/CLAUDE.md`. The rules take effect in every new conversation.
 
 ## Aggressiveness Levels
 
