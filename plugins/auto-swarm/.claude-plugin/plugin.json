@@ -1,8 +1,0 @@
-{
-  "name": "auto-swarm",
-  "description": "Automatically activate Claude Code Agent Teams (Orchestrate teams) based on task complexity. Includes a UserPromptSubmit hook for deterministic enforcement and specialized teammate agent types.",
-  "author": {
-    "name": "zelin"
-  },
-  "hooks": "./hooks/hooks.json"
-}

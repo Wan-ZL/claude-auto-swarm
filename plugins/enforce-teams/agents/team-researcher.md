@@ -1,6 +1,6 @@
 ---
-name: swarm-researcher
-description: Specialized research teammate for Agent Teams. Investigates a specific angle of a problem, explores codebase patterns, and reports findings back to the team lead. Optimized for parallel research in swarm scenarios.
+name: team-researcher
+description: Specialized research teammate for Agent Teams. Investigates a specific angle of a problem, explores codebase patterns, and reports findings back to the team lead. Optimized for parallel research in team scenarios.
 tools: Glob, Grep, LS, Read, NotebookRead, WebFetch, WebSearch, TodoWrite, KillShell, BashOutput
 model: haiku
 color: cyan

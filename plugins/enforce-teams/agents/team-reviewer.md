@@ -1,5 +1,5 @@
 ---
-name: swarm-reviewer
+name: team-reviewer
 description: Specialized code review teammate for Agent Teams. Reviews code from an assigned perspective (security, quality, correctness, performance) and reports issues with severity ratings.
 tools: Glob, Grep, LS, Read, NotebookRead, WebFetch, WebSearch, TodoWrite, KillShell, BashOutput
 model: sonnet

@@ -1,20 +1,20 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "claude-auto-swarm",
-  "description": "Automatically activate Claude Code Agent Teams (Orchestrate teams) based on task complexity. Configurable aggressiveness levels and specialized teammate agents.",
+  "name": "claude-enforce-teams",
+  "description": "Enforce Claude Code Agent Teams for every task. Configurable aggressiveness levels and specialized teammate agents.",
   "owner": {
     "name": "zelin"
   },
   "plugins": [
     {
-      "name": "auto-swarm",
-      "description": "Auto-activate Agent Teams with 5 configurable aggressiveness levels (Extreme/Maximum/Balanced/Conservative/Minimal) and 4 specialized teammate agents (researcher, implementer, reviewer, debugger).",
+      "name": "enforce-teams",
+      "description": "Enforce Agent Teams with 3 delegation levels (Full Delegate/Smart Delegate/Off) and 4 specialized teammate agents (researcher, implementer, reviewer, debugger).",
       "author": {
         "name": "zelin"
       },
-      "source": "./plugins/auto-swarm",
+      "source": "./plugins/enforce-teams",
       "category": "productivity",
-      "homepage": "https://github.com/Wan-ZL/claude-auto-swarm"
+      "homepage": "https://github.com/Wan-ZL/claude-enforce-teams"
     }
   ]
 }

@@ -1,0 +1,7 @@
+{
+  "name": "enforce-teams",
+  "description": "Enforce Claude Code Agent Teams for every task. Configure how aggressively teams are activated, from 'always delegate' to 'only when necessary'. Includes specialized teammate agent types for research, implementation, review, and debugging.",
+  "author": {
+    "name": "zelin"
+  }
+}

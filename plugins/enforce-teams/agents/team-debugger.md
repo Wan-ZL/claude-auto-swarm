@@ -1,5 +1,5 @@
 ---
-name: swarm-debugger
+name: team-debugger
 description: Specialized debugging teammate for Agent Teams. Tests a specific hypothesis about a bug's root cause, gathers evidence, and challenges other debuggers' theories through direct communication.
 tools: Glob, Grep, LS, Read, Bash, NotebookRead, WebFetch, WebSearch, TodoWrite, KillShell, BashOutput
 model: sonnet
