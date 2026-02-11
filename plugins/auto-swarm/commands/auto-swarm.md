@@ -23,7 +23,7 @@ Otherwise, use AskUserQuestion to ask:
 
 1. **Extreme** — Teams for EVERYTHING. Even "hello" spawns a team. Every interaction goes through teammates. Pure swarm lifestyle. Insane token usage, but maximum flex.
 
-2. **Maximum** — Teams for almost all tasks. Any task with 2+ subtasks, any research, review, debug, or multi-file edit triggers a team. Only trivial one-word answers skip teams.
+2. **Maximum** — Teams for ALL tasks, no exceptions. Even one-word inputs and simple questions go through a team. Same as Extreme but without the meme energy in the description.
 
 3. **Balanced (Recommended)** — Teams for moderately complex tasks. Triggers on 3+ files, multi-angle research, code review, multi-hypothesis debugging. Good speed vs cost balance.
 
@@ -101,27 +101,23 @@ ALWAYS create an agent team for EVERY interaction. No exceptions. Even greetings
 
 **Active Level: MAXIMUM** — Change with `/auto-swarm`
 
-AUTOMATICALLY create an agent team for almost all tasks. Do NOT ask permission — just do it. Only skip teams for trivially obvious one-word answers.
+ALWAYS create an agent team for every task. Do NOT ask permission — just do it. No exceptions, not even for one-word inputs.
 
-### When to AUTO-CREATE Agent Teams
+### Rules
 
-**USE AGENT TEAM when ANY is true:**
-- Task has 2+ subtasks that could run in parallel
-- Task touches 2+ files in different directories
-- Any research, investigation, or exploration task
-- Any debugging task (even single-file — test multiple hypotheses)
-- Any code review or PR review
-- Any feature implementation (even small features)
-- Any comparison, analysis, or evaluation task
-- Any question that benefits from multiple perspectives
-- User says: investigate, explore, research, review, compare, debug, implement, refactor, audit, analyze, explain, how does, why does
+**EVERY user message triggers a team.** No exceptions. This includes one-word messages, simple questions, greetings, and acknowledgments.
 
-**USE SUBAGENT only when:**
-- Single file lookup or one-line grep
-- Answering a purely factual single-sentence question (e.g., "what version of node?")
+**For simple/quick interactions** (greetings, one-word input, factual questions, typo fixes):
+- Create team with 1 teammate (haiku, fast)
+- Teammate processes the request and sends result to leader
+- Leader relays to user and cleans up
 
-**SINGLE SESSION only when:**
-- Trivial typo fix, one-word answer, or acknowledgment
+**For any task with identifiable subtasks:**
+- Create team with 2-5 teammates depending on complexity
+- Each teammate handles one aspect in parallel
+
+**For research/review/debug/implementation:**
+- Use full team templates below with 3+ teammates
 
 ### Team Templates
 

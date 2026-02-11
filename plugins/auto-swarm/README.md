@@ -48,7 +48,7 @@ This writes the auto-activation rules to your `~/.claude/CLAUDE.md`. The rules t
 | Level | When Teams Are Created | Token Cost | Example |
 |-------|----------------------|------------|---------|
 | **Extreme** | EVERYTHING. Even "hello" spawns a team | ~5-10x | "hello" → team with greeter teammate → "Hi! How can I help?" |
-| **Maximum** | Almost everything: 2+ subtasks, any research/review/debug | ~4x | "explain this function" → research team analyzes it |
+| **Maximum** | ALL tasks, no exceptions. Same as Extreme, professional tone | ~5-10x | "hello" → team → response. "fix typo" → team → fix |
 | **Balanced** | Moderately complex: 3+ files, multi-angle research, code review | ~3x | "investigate this bug" → debug team with 3 hypotheses |
 | **Conservative** | Clearly complex: 5+ files, major features, large PRs | ~2x | "refactor auth system" → implementation team |
 | **Minimal** | Only when asked or 10+ files | ~1x | Only if you say "use a team" or massive task |
