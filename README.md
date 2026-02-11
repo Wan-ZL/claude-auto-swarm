@@ -171,10 +171,6 @@ rm ~/.claude/hooks/enforce_teams_check.sh
 
 Open `~/.claude/settings.json` and remove the `UserPromptSubmit` hook entry that references `enforce_teams_check.sh`.
 
-### Step 5: Remove CLAUDE.md block (if present)
-
-If `~/.claude/CLAUDE.md` contains an `<!-- enforce-teams:start -->` to `<!-- enforce-teams:end -->` block, delete that entire block.
-
 ### Optional: Remove the marketplace
 
 ```bash

@@ -55,8 +55,6 @@ rm ~/.claude/hooks/enforce_teams_check.sh
 
 Then remove the `UserPromptSubmit` hook entry referencing `enforce_teams_check.sh` from `~/.claude/settings.json`.
 
-If `~/.claude/CLAUDE.md` contains an `<!-- enforce-teams:start -->` to `<!-- enforce-teams:end -->` block, delete that entire block.
-
 ## License
 
 MIT
