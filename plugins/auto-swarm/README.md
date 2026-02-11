@@ -65,13 +65,15 @@ Choose from 5 levels. This writes the auto-activation rules to your `~/.claude/C
 
 ## Aggressiveness Levels
 
-| Level | When Teams Are Created | Token Cost | Example |
-|-------|----------------------|------------|---------|
-| **Extreme** | EVERYTHING. Even "hello" spawns a team | ~5-10x | "hello" → team with greeter teammate → "Hi! How can I help?" |
-| **Maximum** | ALL tasks, no exceptions. Same as Extreme, professional tone | ~5-10x | "hello" → team → response. "fix typo" → team → fix |
-| **Balanced** | Moderately complex: 3+ files, multi-angle research, code review | ~3x | "investigate this bug" → debug team with 3 hypotheses |
-| **Conservative** | Clearly complex: 5+ files, major features, large PRs | ~2x | "refactor auth system" → implementation team |
-| **Minimal** | Only when asked or 10+ files | ~1x | Only if you say "use a team" or massive task |
+| # | Level | When Teams Are Created | Token Cost |
+|---|-------|----------------------|------------|
+| 5 | **Extreme** | EVERYTHING. Even "hello" spawns a team | ~5-10x |
+| 4 | **Maximum** | Almost all tasks. Only skip one-word factual answers | ~4-5x |
+| 3 | **Balanced** ★ | 3+ files, research, review, debug, multi-file impl | ~3x |
+| 2 | **Conservative** | 5+ files, major features, large PRs | ~2x |
+| 1 | **Minimal** | Only when explicitly asked or 10+ files | ~1x |
+
+★ = Recommended
 
 ## How It Works
 

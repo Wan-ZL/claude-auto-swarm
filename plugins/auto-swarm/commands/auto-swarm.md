@@ -15,31 +15,46 @@ Read the user's `~/.claude/CLAUDE.md` file. Look for a section between `<!-- aut
 
 If `$ARGUMENTS` is provided and matches a valid level name (extreme, maximum, balanced, conservative, minimal), skip asking and use that level directly.
 
-Otherwise, use AskUserQuestion with the following configuration. Mark the current level with "(Current)" in its description. Order is from highest to lowest aggressiveness:
+Otherwise, display the following level table to the user. Mark the current level with "← Current". Then ask which level they want by number or name.
+
+```
+┌─────┬───────────────┬──────────────────────────────────────────────────────┬────────────┐
+│  #  │ Level         │ When teams are created                              │ Token cost │
+├─────┼───────────────┼──────────────────────────────────────────────────────┼────────────┤
+│  5  │ Extreme       │ EVERYTHING. Even "hello" spawns a team.             │ ~5-10x     │
+│  4  │ Maximum       │ Almost all tasks. Only skip one-word factual answers │ ~4-5x      │
+│  3  │ Balanced ★    │ 3+ files, research, review, debug, multi-file impl  │ ~3x        │
+│  2  │ Conservative  │ 5+ files, major features, large PRs                 │ ~2x        │
+│  1  │ Minimal       │ Only when asked or 10+ files                        │ ~1x        │
+└─────┴───────────────┴──────────────────────────────────────────────────────┴────────────┘
+★ = Recommended
+```
+
+Use AskUserQuestion to let the user pick:
 
 ```json
 {
   "questions": [
     {
-      "question": "Select aggressiveness level for automatic Agent Teams (high → low):",
+      "question": "Select aggressiveness level (high → low):",
       "header": "Swarm Level",
       "multiSelect": false,
       "options": [
         {
-          "label": "Extreme",
-          "description": "Teams for EVERYTHING. Even 'hello' spawns a team. Pure swarm lifestyle."
+          "label": "5 - Extreme",
+          "description": "Teams for EVERYTHING. Even 'hello' spawns a team."
         },
         {
-          "label": "Maximum",
-          "description": "Teams for ALL tasks, no exceptions. Same rules as Extreme, professional tone."
+          "label": "4 - Maximum",
+          "description": "Almost all tasks. Only skip one-word factual answers."
         },
         {
-          "label": "Balanced (Recommended)",
-          "description": "Teams for moderately complex tasks: 3+ files, multi-angle research, code review."
+          "label": "3 - Balanced (Recommended)",
+          "description": "3+ files, research, review, debug, multi-file implementation."
         },
         {
-          "label": "Conservative",
-          "description": "Teams only for clearly complex work: 5+ files, major features, large PRs."
+          "label": "2 - Conservative / 1 - Minimal",
+          "description": "Conservative: 5+ files, major features. Minimal: only when asked or 10+ files."
         }
       ]
     }
@@ -47,7 +62,29 @@ Otherwise, use AskUserQuestion with the following configuration. Mark the curren
 }
 ```
 
-If the user selects "Other", ask them to type one of: extreme, maximum, balanced, conservative, minimal. The "Minimal" level is available via Other or via `/auto-swarm minimal`.
+If the user selects the last option (Conservative / Minimal), follow up by asking which one they want using a second AskUserQuestion:
+
+```json
+{
+  "questions": [
+    {
+      "question": "Which low-intensity level?",
+      "header": "Low Level",
+      "multiSelect": false,
+      "options": [
+        {
+          "label": "2 - Conservative",
+          "description": "Teams for 5+ files, major features, large PRs."
+        },
+        {
+          "label": "1 - Minimal",
+          "description": "Teams only when explicitly asked or 10+ files."
+        }
+      ]
+    }
+  ]
+}
+```
 
 ## Step 3: Write Configuration to CLAUDE.md
 
@@ -121,23 +158,23 @@ ALWAYS create an agent team for EVERY interaction. No exceptions. Even greetings
 
 **Active Level: MAXIMUM** — Change with `/auto-swarm`
 
-ALWAYS create an agent team for every task. Do NOT ask permission — just do it. No exceptions, not even for one-word inputs.
+AUTOMATICALLY create an agent team for almost all tasks. Do NOT ask permission — just do it.
 
-### Rules
+### When to AUTO-CREATE Agent Teams
 
-**EVERY user message triggers a team.** No exceptions. This includes one-word messages, simple questions, greetings, and acknowledgments.
+**USE AGENT TEAM when ANY is true:**
+- Any task, question, or request beyond a one-word factual answer
+- Task has 2+ subtasks that could run in parallel
+- Task touches 2+ files
+- Any research, investigation, exploration, or analysis
+- Any debugging task (even single-file — test multiple hypotheses)
+- Any code review or PR review
+- Any feature implementation (even small)
+- Any question that benefits from multiple perspectives
+- User says: investigate, explore, research, review, compare, debug, implement, refactor, audit, analyze, explain, how, why
 
-**For simple/quick interactions** (greetings, one-word input, factual questions, typo fixes):
-- Create team with 1 teammate (haiku, fast)
-- Teammate processes the request and sends result to leader
-- Leader relays to user and cleans up
-
-**For any task with identifiable subtasks:**
-- Create team with 2-5 teammates depending on complexity
-- Each teammate handles one aspect in parallel
-
-**For research/review/debug/implementation:**
-- Use full team templates below with 3+ teammates
+**SINGLE SESSION only when:**
+- One-word factual answer (e.g., "what version of node?" → just answer)
 
 ### Team Templates
 
